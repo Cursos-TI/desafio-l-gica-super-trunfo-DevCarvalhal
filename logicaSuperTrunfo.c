@@ -6,7 +6,25 @@
 // Siga os comentários para implementar cada parte do desafio.
 
 int main() {
-    // Definição das variáveis para armazenar as propriedades das cidades
+    struct Carta {
+        char nome [30];
+        float tamanho;
+        float populacao;
+    }    
+    
+    struct carta jogador1() {
+        "Rio de Janeiro";
+        1.200;
+        6.730.729;
+    }
+
+    struct carta jogador2(){
+        "São Paulo";
+        1.521,2; 
+        11.904.961;
+
+        
+        // Definição das variáveis para armazenar as propriedades das cidades
     // Você pode utilizar o código do primeiro desafio
 
     
