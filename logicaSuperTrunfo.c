@@ -1,27 +1,40 @@
-#include <stdio.h>
 
-Qualidade de Vida =
-(qualidade_do_ar * 0.4) +
-(lazer * 0.4) -
-(criminalidade * 0.2)
+QV = (qualidade_do_ar * 0.4) + (lazer * 0.4) - (criminalidade * 0.2)
+
+#include <stdio.h>
+#include <stdib.h>
+#include <time.h>
+
+#define total_cidades 5
     
-struct Carta {
+struct Cidade {
         char nome [30];
         int criminalidade;
         int qualidade_ar;
         int lazer;
-    }    
- float calcular_qualidade (struct cidade c) {
+    };    
+ float calcularQualidadeVida (struct cidade c) {
         return (c.qualidade_ar * 0.4) +
                (c.lazer *0.4) -
                (c.criminalidade * 0.2);
+ }
+
 int main() {
-        struct cidade_jogador1 = {"São Paulo - SP", 50, 60, 80};
-        struct cidade_jogador2 = {"Rio de Janeiro - RJ", 75, 70, 99};
+        struct Cidade cidade[total_cidades] = {
+            {"São Paulo - SP", 50, 60, 80},
+            {"Rio de Janeiro - RJ", 75, 70, 99},
+            {"Curitiba - PR", 40, 85, 70},
+            {"Salvador - BA", 65, 70, 75},
+            {"Belo Horizonte - MG", 50, 75, 72}
+};
+    struct Cidade jogador1, jogador2;
 
-    float qv_jogador1, qv_jogador2;
-
-    printf("=== SUPER TRUNFO - CIDADES DO BRASIL ===/n/n");
+    float qv1, qv2;
+    srand(time(NULL));
+    jogador1 = cidades[rand() % total_cidades];
+    jogador2 = cidades[rand() % total_cidades];
+    
+    printf("=== SUPER TRUNFO - CIDADES DO BRASIL ===\n\n");
 
     printf("Jogador 1: %s\n", jogador1.nome);
     printf("Criminalidade: %d\n", jogador1.criminalidade);
