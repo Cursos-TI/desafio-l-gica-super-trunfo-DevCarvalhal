@@ -4,15 +4,15 @@
 
 #define TOTAL_CIDADES 5
 
-// Estrutura que representa uma carta do jogo
+// Carta
 struct Cidade {
     char nome[30];
-    int criminalidade;   // quanto menor, melhor
-    int qualidade_ar;    // quanto maior, melhor
-    int lazer;           // quanto maior, melhor
+    int criminalidade;
+    int qualidade_ar;
+    int lazer;
 };
 
-// Função para calcular a qualidade de vida
+// calcular qualidade de vida
 float calcularQualidadeVida(struct Cidade c) {
     return (c.qualidade_ar * 0.4) +
            (c.lazer * 0.4) -
@@ -20,7 +20,6 @@ float calcularQualidadeVida(struct Cidade c) {
 }
 
 int main() {
-    // Vetor de cidades (cartas)
     struct Cidade cidades[TOTAL_CIDADES] = {
         {"São Paulo - SP", 70, 60, 85},
         {"Rio de Janeiro - RJ", 75, 65, 80},
@@ -29,44 +28,67 @@ int main() {
         {"Belo Horizonte - MG", 50, 75, 72}
     };
 
-    struct Cidade jogador1, jogador2;
-    float qv1, qv2;
+    int escolhaJogador;
+    int escolhaComputador;
+    float qvJogador, qvComputador;
 
-    // Inicializa o gerador de números aleatórios
     srand(time(NULL));
 
-    // Sorteio das cidades
-    jogador1 = cidades[rand() % TOTAL_CIDADES];
-    jogador2 = cidades[rand() % TOTAL_CIDADES];
-
     printf("===== SUPER TRUNFO - CIDADES DO BRASIL =====\n\n");
+    printf("Escolha sua cidade:\n");
 
-    printf("Jogador 1 recebeu: %s\n", jogador1.nome);
-    printf("Criminalidade: %d\n", jogador1.criminalidade);
-    printf("Qualidade do ar: %d\n", jogador1.qualidade_ar);
-    printf("Lazer: %d\n\n", jogador1.lazer);
+    // Menu de cidades
+    for (int i = 0; i < TOTAL_CIDADES; i++) {
+        printf("%d - %s\n", i + 1, cidades[i].nome);
+    }
 
-    printf("Jogador 2 recebeu: %s\n", jogador2.nome);
-    printf("Criminalidade: %d\n", jogador2.criminalidade);
-    printf("Qualidade do ar: %d\n", jogador2.qualidade_ar);
-    printf("Lazer: %d\n\n", jogador2.lazer);
+    printf("\nDigite o número da cidade: ");
+    scanf("%d", &escolhaJogador);
+
+    escolhaJogador--;
+
+    // Validação simples
+    if (escolhaJogador < 0 || escolhaJogador >= TOTAL_CIDADES) {
+        printf("Opção inválida!\n");
+        return 1;
+    }
+
+    // Sorteio da cidade do computador (diferente da do jogador)
+    do {
+        escolhaComputador = rand() % TOTAL_CIDADES;
+    } while (escolhaComputador == escolhaJogador);
+
+    struct Cidade jogador = cidades[escolhaJogador];
+    struct Cidade computador = cidades[escolhaComputador];
+
+    printf("\n--- SUA CARTA ---\n");
+    printf("Cidade: %s\n", jogador.nome);
+    printf("Criminalidade: %d\n", jogador.criminalidade);
+    printf("Qualidade do ar: %d\n", jogador.qualidade_ar);
+    printf("Lazer: %d\n\n", jogador.lazer);
+
+    printf("--- CARTA DO COMPUTADOR ---\n");
+    printf("Cidade: %s\n", computador.nome);
+    printf("Criminalidade: %d\n", computador.criminalidade);
+    printf("Qualidade do ar: %d\n", computador.qualidade_ar);
+    printf("Lazer: %d\n\n", computador.lazer);
 
     // Cálculo da qualidade de vida
-    qv1 = calcularQualidadeVida(jogador1);
-    qv2 = calcularQualidadeVida(jogador2);
+    qvJogador = calcularQualidadeVida(jogador);
+    qvComputador = calcularQualidadeVida(computador);
 
-    printf("Qualidade de Vida - Jogador 1: %.2f\n", qv1);
-    printf("Qualidade de Vida - Jogador 2: %.2f\n\n", qv2);
+    printf("Qualidade de Vida (Jogador): %.2f\n", qvJogador);
+    printf("Qualidade de Vida (Computador): %.2f\n\n", qvComputador);
 
-    // Resultado final
-    if (qv1 > qv2) {
-        printf("🏆 Jogador 1 venceu! (%s)\n", jogador1.nome);
+    // Resultado
+    if (qvJogador > qvComputador) {
+        printf("Você venceu! (%s tem melhor qualidade de vida)\n", jogador.nome);
     } 
-    else if (qv2 > qv1) {
-        printf("🏆 Jogador 2 venceu! (%s)\n", jogador2.nome);
+    else if (qvComputador > qvJogador) {
+        printf("Computador venceu! (%s tem melhor qualidade de vida)\n", computador.nome);
     } 
     else {
-        printf("🤝 Empate!\n");
+        printf("Empate!\n");
     }
 
     return 0;
