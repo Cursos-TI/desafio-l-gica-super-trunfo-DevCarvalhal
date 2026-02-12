@@ -31,10 +31,11 @@ int main() {
 
     float qv1, qv2;
     srand(time(NULL));
+    
     jogador1 = cidades[rand() % total_cidades];
     jogador2 = cidades[rand() % total_cidades];
     
-    printf("=== SUPER TRUNFO - CIDADES DO BRASIL ===\n\n");
+    printf("===== SUPER TRUNFO - CIDADES DO BRASIL =====\n\n");
 
     printf("Jogador 1: %s\n", jogador1.nome);
     printf("Criminalidade: %d\n", jogador1.criminalidade);
@@ -65,7 +66,8 @@ int main() {
 
     }
 
-
+//Jogo SUper Trunfo de Cidade brasileiras utilizando como parametros qualidade de vida
+    // baseando-se em (qualidade do ar, criminalidade e lazer)
 
         
         // Definição das variáveis para armazenar as propriedades das cidades
