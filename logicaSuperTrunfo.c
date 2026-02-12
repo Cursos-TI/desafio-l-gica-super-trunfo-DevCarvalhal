@@ -1,27 +1,37 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 2 - Comparação das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de comparação de cartas de cidades. 
-// Siga os comentários para implementar cada parte do desafio.
-
-int main() {
-    struct Carta {
-        char nome [30];
-        float tamanho;
-        float populacao;
-    }    
+Qualidade de Vida =
+(qualidade_do_ar * 0.4) +
+(lazer * 0.4) -
+(criminalidade * 0.2)
     
-    struct carta jogador1() {
-        "Rio de Janeiro";
-        1.200;
-        6.730.729;
+struct Carta {
+        char nome [30];
+        int criminalidade;
+        int qualidade_ar;
+        int lazer;
+    }    
+ float calcular_qualidade (struct cidade c) {
+        return (c.qualidade_ar * 0.4) +
+               (c.lazer *0.4) -
+               (c.criminalidade * 0.2);
+int main() {
+        struct cidade_jogador1 = {"São Paulo - SP", 50, 60, 80};
+        struct cidade_jogador2 = {"Rio de Janeiro - RJ", 75, 70, 99};
+
+    float qv_jogador1, qv_jogador2;
+
+    printf("=== SUPER TRUNFO - CIDADES DO BRASIL ===/n/n");
+
+    printf("Jogador 1: %s/n", jogador1.nome);
+    printf("Criminalidade: %d/n", jogador1.criminalidade);
+    printf("Qualidade do ar: %d/n", jogador1.qualidade_ar);
+    printf("Lazer: %d/n/n", jogador1.lazer);
+
+   
     }
 
-    struct carta jogador2(){
-        "São Paulo";
-        1.521,2; 
-        11.904.961;
+
 
         
         // Definição das variáveis para armazenar as propriedades das cidades
