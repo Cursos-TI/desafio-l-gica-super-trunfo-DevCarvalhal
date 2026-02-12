@@ -28,7 +28,11 @@ int main() {
     printf("Qualidade do ar: %d/n", jogador1.qualidade_ar);
     printf("Lazer: %d/n/n", jogador1.lazer);
 
-   
+    printf("Jogador 2: %d/n", jogador2.nome);
+    printf("Criminalidade: %d/n", jogador2.criminalidade);
+    printf("Qualidade do ar: %d/n", jogador2.qualidade_ar);
+    printf("Lazer: %d/n/n", jogador2.lazer);
+
     }
 
 
