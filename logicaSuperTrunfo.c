@@ -1,107 +1,73 @@
-
-QV = (qualidade_do_ar * 0.4) + (lazer * 0.4) - (criminalidade * 0.2)
-
 #include <stdio.h>
-#include <stdib.h>
+#include <stdlib.h>
 #include <time.h>
 
-#define total_cidades 5
-    
+#define TOTAL_CIDADES 5
+
+// Estrutura que representa uma carta do jogo
 struct Cidade {
-        char nome [30];
-        int criminalidade;
-        int qualidade_ar;
-        int lazer;
-    };    
- float calcularQualidadeVida (struct cidade c) {
-        return (c.qualidade_ar * 0.4) +
-               (c.lazer *0.4) -
-               (c.criminalidade * 0.2);
- }
+    char nome[30];
+    int criminalidade;   // quanto menor, melhor
+    int qualidade_ar;    // quanto maior, melhor
+    int lazer;           // quanto maior, melhor
+};
+
+// Função para calcular a qualidade de vida
+float calcularQualidadeVida(struct Cidade c) {
+    return (c.qualidade_ar * 0.4) +
+           (c.lazer * 0.4) -
+           (c.criminalidade * 0.2);
+}
 
 int main() {
-        struct Cidade cidade[total_cidades] = {
-            {"São Paulo - SP", 50, 60, 80},
-            {"Rio de Janeiro - RJ", 75, 70, 99},
-            {"Curitiba - PR", 40, 85, 70},
-            {"Salvador - BA", 65, 70, 75},
-            {"Belo Horizonte - MG", 50, 75, 72}
-};
-    struct Cidade jogador1, jogador2;
+    // Vetor de cidades (cartas)
+    struct Cidade cidades[TOTAL_CIDADES] = {
+        {"São Paulo - SP", 70, 60, 85},
+        {"Rio de Janeiro - RJ", 75, 65, 80},
+        {"Curitiba - PR", 40, 85, 70},
+        {"Salvador - BA", 65, 70, 75},
+        {"Belo Horizonte - MG", 50, 75, 72}
+    };
 
+    struct Cidade jogador1, jogador2;
     float qv1, qv2;
+
+    // Inicializa o gerador de números aleatórios
     srand(time(NULL));
-    
-    jogador1 = cidades[rand() % total_cidades];
-    jogador2 = cidades[rand() % total_cidades];
-    
+
+    // Sorteio das cidades
+    jogador1 = cidades[rand() % TOTAL_CIDADES];
+    jogador2 = cidades[rand() % TOTAL_CIDADES];
+
     printf("===== SUPER TRUNFO - CIDADES DO BRASIL =====\n\n");
 
-    printf("Jogador 1: %s\n", jogador1.nome);
+    printf("Jogador 1 recebeu: %s\n", jogador1.nome);
     printf("Criminalidade: %d\n", jogador1.criminalidade);
     printf("Qualidade do ar: %d\n", jogador1.qualidade_ar);
     printf("Lazer: %d\n\n", jogador1.lazer);
 
-    printf("Jogador 2: %d\n", jogador2.nome);
+    printf("Jogador 2 recebeu: %s\n", jogador2.nome);
     printf("Criminalidade: %d\n", jogador2.criminalidade);
     printf("Qualidade do ar: %d\n", jogador2.qualidade_ar);
     printf("Lazer: %d\n\n", jogador2.lazer);
 
+    // Cálculo da qualidade de vida
+    qv1 = calcularQualidadeVida(jogador1);
+    qv2 = calcularQualidadeVida(jogador2);
 
-    qv_jogador1 = calcular_qualidade_vida(jogador1);
-    qv_jogador1 = calcular_qualidade_vida(jogador2);
+    printf("Qualidade de Vida - Jogador 1: %.2f\n", qv1);
+    printf("Qualidade de Vida - Jogador 2: %.2f\n\n", qv2);
 
-    printf("Qualidade de Vida Jogado 1: %.2f\n", qv_jogador1);
-    printf("Qualidade de Vida Jogado 1: %.2f\n", qv_jogador2);
-
-    if(qv_jogador1 > qv_jogador2) {
-        printf("Jogador 1 venceu!! (%s tem a melhor qualidade de vida)\n", jogador1.nome);
-    } else if {
-        printf("Jogador 1 venceu!! (%s tem a melhor qualidade de vida)\n", jogador2.nome);
-    } else {
-        printf("Empate!!);
-            }
-    
-    retunr 0;
-
+    // Resultado final
+    if (qv1 > qv2) {
+        printf("🏆 Jogador 1 venceu! (%s)\n", jogador1.nome);
+    } 
+    else if (qv2 > qv1) {
+        printf("🏆 Jogador 2 venceu! (%s)\n", jogador2.nome);
+    } 
+    else {
+        printf("🤝 Empate!\n");
     }
-
-//Jogo SUper Trunfo de Cidade brasileiras utilizando como parametros qualidade de vida
-    // baseando-se em (qualidade do ar, criminalidade e lazer)
-
-        
-        // Definição das variáveis para armazenar as propriedades das cidades
-    // Você pode utilizar o código do primeiro desafio
-
-    
-    // Cadastro das Cartas:
-    // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
-    // utilizando a função scanf para capturar as entradas.
-    // utilize o código do primeiro desafio
-
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
-
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
-
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
-
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
-
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
 
     return 0;
 }
