@@ -23,15 +23,32 @@ int main() {
 
     printf("=== SUPER TRUNFO - CIDADES DO BRASIL ===/n/n");
 
-    printf("Jogador 1: %s/n", jogador1.nome);
-    printf("Criminalidade: %d/n", jogador1.criminalidade);
-    printf("Qualidade do ar: %d/n", jogador1.qualidade_ar);
-    printf("Lazer: %d/n/n", jogador1.lazer);
+    printf("Jogador 1: %s\n", jogador1.nome);
+    printf("Criminalidade: %d\n", jogador1.criminalidade);
+    printf("Qualidade do ar: %d\n", jogador1.qualidade_ar);
+    printf("Lazer: %d\n\n", jogador1.lazer);
 
-    printf("Jogador 2: %d/n", jogador2.nome);
-    printf("Criminalidade: %d/n", jogador2.criminalidade);
-    printf("Qualidade do ar: %d/n", jogador2.qualidade_ar);
-    printf("Lazer: %d/n/n", jogador2.lazer);
+    printf("Jogador 2: %d\n", jogador2.nome);
+    printf("Criminalidade: %d\n", jogador2.criminalidade);
+    printf("Qualidade do ar: %d\n", jogador2.qualidade_ar);
+    printf("Lazer: %d\n\n", jogador2.lazer);
+
+
+    qv_jogador1 = calcular_qualidade_vida(jogador1);
+    qv_jogador1 = calcular_qualidade_vida(jogador2);
+
+    printf("Qualidade de Vida Jogado 1: %.2f\n", qv_jogador1);
+    printf("Qualidade de Vida Jogado 1: %.2f\n", qv_jogador2);
+
+    if(qv_jogador1 > qv_jogador2) {
+        printf("Jogador 1 venceu!! (%s tem a melhor qualidade de vida)\n", jogador1.nome);
+    } else if {
+        printf("Jogador 1 venceu!! (%s tem a melhor qualidade de vida)\n", jogador2.nome);
+    } else {
+        printf("Empate!!);
+            }
+    
+    retunr 0;
 
     }
 
